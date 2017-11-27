@@ -1,0 +1,3 @@
+rootProject.name = 'hubersOnMaps'
+
+include ':app'
