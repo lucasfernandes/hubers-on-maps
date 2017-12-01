@@ -1,4 +1,6 @@
+
 // Action Types
+
 import { Types as UITypes } from 'redux/ducks/ui';
 
 export const Types = {
@@ -11,14 +13,19 @@ export const Types = {
 
 // Reducers
 
-const initialState = { data: [], error: false, loading: false };
+const initialState = {
+  data: [],
+  loading: false,
+  error: false,
+  errorMessage: '',
+};
 
 export default function locations(state = initialState, action) {
   switch (action.type) {
-    case UITypes.CLOSE:
+    case UITypes.OPEN:
     case Types.PREPARE:
       return {
-        data: [...state.data],
+        ...state,
         loading: false,
         error: false,
         errorMessage: '',
@@ -44,7 +51,7 @@ export default function locations(state = initialState, action) {
         loading: false,
         error: true,
         modal: true,
-        errorMessage: 'Não encontrei este GitHuber, =(',
+        errorMessage: 'Usuário não encontrado',
       };
     case Types.DUPLICATED:
       return {
@@ -52,7 +59,7 @@ export default function locations(state = initialState, action) {
         loading: false,
         error: true,
         modal: true,
-        errorMessage: 'Este GitHuber já foi adicionado antes...',
+        errorMessage: 'Usuário já existe',
       };
     default:
       return state;

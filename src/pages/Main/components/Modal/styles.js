@@ -1,5 +1,5 @@
 import { StyleSheet, Platform } from 'react-native';
-import { colors, fonts } from 'styles';
+import { colors, fonts, metrics } from 'styles';
 
 const styles = StyleSheet.create({
 
@@ -14,13 +14,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: fonts.regular,
     alignSelf: 'center',
-    paddingTop: 5,
+    paddingTop: metrics.tinyPadding,
   },
 
   box: {
     flex: 1,
     maxHeight: 175,
-    marginHorizontal: 20,
+    marginHorizontal: metrics.baseMargin,
     padding: 20,
     backgroundColor: colors.white,
     borderRadius: 5,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: fonts.big,
     color: colors.darker,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: metrics.baseMargin,
   },
 
   input: {
@@ -45,18 +45,18 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         padding: 12,
-        paddingLeft: 20,
+        paddingLeft: metrics.basePadding,
       },
       android: {
         padding: 6,
-        paddingLeft: 20,
+        paddingLeft: metrics.basePadding,
       },
     }),
 
   },
 
   buttonContainer: {
-    marginTop: 10,
+    marginTop: metrics.smallMargin,
     alignSelf: 'stretch',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -69,6 +69,16 @@ const styles = StyleSheet.create({
 
   buttonMargin: {
     marginLeft: 15,
+  },
+
+  loading: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  text: {
+    marginTop: metrics.baseMargin,
   },
 
 });

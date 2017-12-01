@@ -22,11 +22,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
 
-  loading: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: colors.transparentBackground,
-  },
 });
 
 export default styles;

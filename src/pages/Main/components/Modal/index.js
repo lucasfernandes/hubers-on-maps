@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /* Presentational */
-import { View, Text, Modal, TextInput } from 'react-native';
+import { View, Text, Modal, TextInput, ActivityIndicator } from 'react-native';
 import { colors } from 'styles';
 import Button from 'pages/Main/components/Button';
 
@@ -22,21 +22,21 @@ class ModalBox extends Component {
     addLocation: PropTypes.func.isRequired,
     ui: PropTypes.shape({
       modal: PropTypes.bool,
-      error: PropTypes.bool,
       coordinate: PropTypes.shape({
         latitude: PropTypes.number,
         longitude: PropTypes.number,
       }),
     }).isRequired,
     locations: PropTypes.shape({
-      error: PropTypes.bool,
-      loading: PropTypes.bool,
       data: PropTypes.arrayOf(PropTypes.shape({
         coordinate: PropTypes.shape({
           latitude: PropTypes.number,
           longitude: PropTypes.number,
         }),
       })),
+      loading: PropTypes.bool,
+      error: PropTypes.bool,
+      errorMessage: PropTypes.string,
     }).isRequired,
   };
 
@@ -51,7 +51,50 @@ class ModalBox extends Component {
     if (login === '') return;
 
     this.props.addLocation(login, coordinate);
+
+    this.setState({ login: '' });
   }
+
+  renderContent = () => (
+    <View>
+      <Text style={styles.title}>Adicionar novo local</Text>
+      <TextInput
+        autoCorrect={false}
+        autoCapitalize="none"
+        placeholder="Usuário no GitHub"
+        placeholderTextColor={colors.dark}
+        value={this.state.login}
+        onChangeText={text => this.setState({ login: text })}
+        style={styles.input}
+        underlineColorAndroid={colors.transparentBackground}
+      />
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          color="cancel"
+          onPress={() => this.props.closeModal()}
+        >
+          Cancelar
+        </Button>
+        <Button
+          style={styles.buttonMargin}
+          color="success"
+          onPress={() => this.addLocation()}
+        >
+          Salvar
+        </Button>
+      </View>
+    </View>
+  );
+
+  renderLoading = () => (
+    <View style={styles.loading}>
+      <ActivityIndicator color={colors.black} size="large" />
+      <Text style={styles.text}>
+        Aguarde...
+      </Text>
+    </View>
+  );
 
   render() {
     return (
@@ -64,33 +107,9 @@ class ModalBox extends Component {
       >
         <View style={styles.container}>
           <View style={styles.box}>
-            <Text style={styles.title}>Adicionar novo local</Text>
-            <TextInput
-              autoCorrect={false}
-              autoCapitalize="none"
-              placeholder="Usuário no GitHub"
-              placeholderTextColor={colors.dark}
-              value={this.state.login}
-              onChangeText={text => this.setState({ login: text })}
-              style={styles.input}
-              underlineColorAndroid="rgba(0, 0, 0, 0)"
-            />
-            <View style={styles.buttonContainer}>
-              <Button
-                style={styles.button}
-                color="cancel"
-                onPress={() => this.props.closeModal()}
-              >
-                Cancelar
-              </Button>
-              <Button
-                style={styles.buttonMargin}
-                color="success"
-                onPress={() => this.addLocation()}
-              >
-                Salvar
-              </Button>
-            </View>
+            { this.props.locations.loading
+              ? this.renderLoading()
+              : this.renderContent() }
           </View>
           { this.props.locations.error &&
             <Text style={styles.error}>{this.props.locations.errorMessage}</Text>}

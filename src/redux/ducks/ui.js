@@ -1,6 +1,7 @@
-import { Types as LocationsTypes } from 'redux/ducks/locations';
 
 // Action Types
+
+import { Types as LocationsTypes } from 'redux/ducks/locations';
 
 export const Types = {
   OPEN: 'ui/OPEN',
@@ -15,7 +16,6 @@ const initialState = { modal: false };
 
 export default function modal(state = initialState, action) {
   switch (action.type) {
-    case LocationsTypes.DUPLICATED:
     case Types.OPEN:
       return {
         ...state,

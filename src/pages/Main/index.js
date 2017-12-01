@@ -8,10 +8,8 @@ import { connect } from 'react-redux';
 import { openModal } from 'redux/ducks/ui';
 
 /* Presentational */
-import { View, Image, ActivityIndicator } from 'react-native';
+import { View, Image } from 'react-native';
 import MapView from 'react-native-maps';
-
-import { colors } from 'styles';
 
 import Modal from './components/Modal';
 
@@ -64,9 +62,7 @@ class Main extends Component {
             </MapView.Marker>
           ))}
         </MapView>
-        { this.props.locations.loading
-          ? <View style={styles.loading}><ActivityIndicator color={colors.black} size="large" /></View>
-          : <Modal /> }
+        <Modal />
       </View>
     );
   }
