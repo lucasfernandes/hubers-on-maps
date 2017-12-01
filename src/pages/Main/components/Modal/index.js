@@ -66,7 +66,7 @@ class ModalBox extends Component {
         value={this.state.login}
         onChangeText={text => this.setState({ login: text })}
         style={styles.input}
-        underlineColorAndroid={colors.transparentBackground}
+        underlineColorAndroid={colors.inputAndroidUnderline}
       />
       <View style={styles.buttonContainer}>
         <Button
