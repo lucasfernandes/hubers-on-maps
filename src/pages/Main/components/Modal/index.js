@@ -28,13 +28,16 @@ class ModalBox extends Component {
         longitude: PropTypes.number,
       }),
     }).isRequired,
-    locations: PropTypes.objectOf(PropTypes.shape({
-      coordinate: PropTypes.shape({
-        latitude: PropTypes.number,
-        longitude: PropTypes.number,
-      }),
+    locations: PropTypes.shape({
       error: PropTypes.bool,
-    })).isRequired,
+      loading: PropTypes.bool,
+      data: PropTypes.arrayOf(PropTypes.shape({
+        coordinate: PropTypes.shape({
+          latitude: PropTypes.number,
+          longitude: PropTypes.number,
+        }),
+      })),
+    }).isRequired,
   };
 
   state = {

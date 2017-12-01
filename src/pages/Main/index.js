@@ -21,25 +21,16 @@ class Main extends Component {
   static propTypes = {
     openModal: PropTypes.func.isRequired,
     locations: PropTypes.shape({
+      error: PropTypes.bool,
       loading: PropTypes.bool,
       data: PropTypes.arrayOf(PropTypes.shape({
-        // user: PropTypes.shape({
-        //   id: PropTypes.number,
-        //   name: PropTypes.string,
-        //   bio: PropTypes.string,
-        //   avatar_url: PropTypes.string,
-        // }),
-        // coordinate: PropTypes.shape({
-        //   latitude: PropTypes.string,
-        //   longitude: PropTypes.string,
-        // }),
+        coordinate: PropTypes.shape({
+          latitude: PropTypes.number,
+          longitude: PropTypes.number,
+        }),
       })),
     }).isRequired,
   };
-
-  state = {
-    initialRender: true,
-  }
 
   initialState = () => ({
     latitude: -27.2177659,
@@ -53,6 +44,7 @@ class Main extends Component {
 
     return (
       <View style={styles.map}>
+        <Image />
         <MapView
           style={styles.map}
           region={this.initialState()}
@@ -68,8 +60,6 @@ class Main extends Component {
               <Image
                 style={styles.marker}
                 source={{ uri: marker.user.avatar_url }}
-                onLayout={() => this.setState({ initialRender: false })}
-                key={`${this.state.initialRender}`}
               />
             </MapView.Marker>
           ))}
