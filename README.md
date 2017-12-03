@@ -1,6 +1,3 @@
-# hubers-on-maps
-Set GitHubers location on Maps
-
 # Hubers on Maps
 > 3nd Challenge for RocketSeat GoNative Course
 
