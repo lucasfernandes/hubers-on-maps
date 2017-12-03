@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { openModal } from 'redux/ducks/ui';
+import { removeMarker } from 'redux/ducks/locations';
 
 /* Presentational */
-import { View, Image } from 'react-native';
+import { View, Image, Text, TouchableWithoutFeedback, Platform } from 'react-native';
 import MapView from 'react-native-maps';
 
 import Modal from './components/Modal';
@@ -28,6 +29,7 @@ class Main extends Component {
         }),
       })),
     }).isRequired,
+    removeMarker: PropTypes.func.isRequired,
   };
 
   initialState = () => ({
@@ -36,6 +38,36 @@ class Main extends Component {
     latitudeDelta: 0.0042,
     longitudeDelta: 0.0031,
   });
+
+  removeMarker = (marker) => {
+    this.props.removeMarker(marker);
+  }
+
+  renderCalloutIos = marker => (
+    <MapView.Callout style={styles.callOut}>
+      <View style={styles.callOutTitleContainer}>
+        <Text style={styles.callOutTitle}>{marker.user.name}</Text>
+        <TouchableWithoutFeedback onPress={() => this.removeMarker(marker)}>
+          <View>
+            <Text style={styles.callOutRemove}>Remover</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
+      <Text style={styles.callOutSub} numberOfLines={3}>{marker.user.bio}</Text>
+    </MapView.Callout>
+  );
+
+  renderCalloutAndroid = marker => (
+    <MapView.Callout style={styles.callOut} onPress={() => this.removeMarker(marker)}>
+      <View style={styles.callOutTitleContainer}>
+        <Text style={styles.callOutTitle}>{marker.user.name}</Text>
+        <View>
+          <Text style={styles.callOutRemove}>Remover</Text>
+        </View>
+      </View>
+      <Text style={styles.callOutSub} numberOfLines={3}>{marker.user.bio}</Text>
+    </MapView.Callout>
+  );
 
   render() {
     const { locations } = this.props;
@@ -59,6 +91,10 @@ class Main extends Component {
                 style={styles.marker}
                 source={{ uri: marker.user.avatar_url }}
               />
+
+              { Platform.OS === 'ios'
+                ? this.renderCalloutIos(marker)
+                : this.renderCalloutAndroid(marker)}
             </MapView.Marker>
           ))}
         </MapView>
@@ -74,6 +110,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ openModal }, dispatch);
+  bindActionCreators({ openModal, removeMarker }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

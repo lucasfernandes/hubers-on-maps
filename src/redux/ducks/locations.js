@@ -9,6 +9,7 @@ export const Types = {
   SUCCESS: 'locations/SUCCESS',
   ERROR: 'locations/ERROR',
   DUPLICATED: 'locations/DUPLICATED',
+  REMOVE: 'locations/REMOVE',
 };
 
 // Reducers
@@ -61,6 +62,10 @@ export default function locations(state = initialState, action) {
         modal: true,
         errorMessage: 'Usuário já existe',
       };
+    case Types.REMOVE:
+      return {
+        data: state.data.filter(marker => marker.user.id !== action.payload.marker.user.id),
+      };
     default:
       return state;
   }
@@ -75,6 +80,15 @@ export function addLocation(login, coordinate) {
     payload: {
       login,
       coordinate,
+    },
+  };
+}
+
+export function removeMarker(marker) {
+  return {
+    type: Types.REMOVE,
+    payload: {
+      marker,
     },
   };
 }

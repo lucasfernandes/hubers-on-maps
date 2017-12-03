@@ -5,6 +5,7 @@ export default {
   dark: '#999',
   darker: '#333',
   black: '#000',
+  red: 'red',
 
   background: '#F5F5F5',
   transparentBackground: 'rgba(0,0,0,0.6)',
