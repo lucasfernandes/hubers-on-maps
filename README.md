@@ -31,8 +31,9 @@ yarn add redux-saga
 
 ## Info
 
-Lucas Silveira – [@lfsilveira](https://twitter.com/dbader_org) – lucas.fernandes.silveira@gmail.com
-
+Lucas Silveira
+[@lfsilveira](https://twitter.com/dbader_org)
+lucas.fernandes.silveira@gmail.com
 [github.com/lucasfernandes](https://github.com/lucasfernandes/)
 
 
