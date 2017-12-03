@@ -6,7 +6,7 @@ Set GitHubers location on Maps
 
 With Hubers on Maps you can add GitHub users in specific point on the map and know where these people are.
 
-![]()
+![](https://github.com/lucasfernandes/hubers-on-maps/blob/master/docs/hubersOnMaps.gif)
 
 
 ## Development setup
@@ -14,10 +14,19 @@ With Hubers on Maps you can add GitHub users in specific point on the map and kn
 We need to install the libs below:
 
 ```via yarn
+yarn add apisauce
 yarn add prop-types
-yarn add react-navigation
+yarn add react-native-maps
 yarn add react-native-vector-icons
-react-native link react-native-vector-icons
+yarn add react-navigation
+yarn add react-redux
+yarn add react-style-proptype
+yarn add reactotron-react-native
+yarn add reactotron-redux
+yarn add reactotron-redux-saga
+yarn add redux
+yarn add redux-persist
+yarn add redux-saga
 ```
 
 ## Info
