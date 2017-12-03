@@ -32,7 +32,7 @@ yarn add redux-saga
 ## Info
 
 Lucas Silveira<br />
-[Twitter: @lfsilveira](https://twitter.com/dbader_org)<br />
+Twitter: [@lfsilveira](https://twitter.com/dbader_org)<br />
 Email: lucas.fernandes.silveira@gmail.com<br />
 GitHub: [github.com/lucasfernandes](https://github.com/lucasfernandes/)<br />
 
