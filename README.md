@@ -1,5 +1,5 @@
 # Hubers on Maps
-> 3nd Challenge for RocketSeat GoNative Course
+> 3rd Challenge for RocketSeat GoNative Course
 
 With Hubers on Maps you can add GitHub users in specific point on the map and know where these people are.
 
