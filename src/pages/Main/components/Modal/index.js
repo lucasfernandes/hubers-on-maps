@@ -48,9 +48,6 @@ class ModalBox extends Component {
     const { login } = this.state;
     const { coordinate } = this.props.ui;
 
-    console.log(login);
-    console.log(coordinate);
-
     if (login === '') return;
 
     this.props.addLocation(login, coordinate);
@@ -103,7 +100,6 @@ class ModalBox extends Component {
     return (
       <Modal
         style={styles.container}
-        onRequestClose={() => {}}
         animationType="none"
         transparent={false}
         visible={this.props.ui.modal}
