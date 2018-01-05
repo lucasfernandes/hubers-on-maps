@@ -48,6 +48,9 @@ class ModalBox extends Component {
     const { login } = this.state;
     const { coordinate } = this.props.ui;
 
+    console.log(login);
+    console.log(coordinate);
+
     if (login === '') return;
 
     this.props.addLocation(login, coordinate);
