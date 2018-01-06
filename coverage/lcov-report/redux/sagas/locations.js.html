@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/32</span>
+        <span class='fraction'>10/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/15</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>2/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">90% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>9/10</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -67,31 +67,39 @@
 22
 23
 24
-25</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+25
+26
+27
+28
+29</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import api from 'services/api';<span class="cstat-no" title="statement not covered" ></span></span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import api from 'services/api';
 &nbsp;
 import { Types as LocationsTypes } from 'redux/ducks/locations';
 &nbsp;
@@ -99,20 +107,24 @@ import { call, put, select } from 'redux-saga/effects';
 &nbsp;
 const locations = state =&gt; state.locations;
 &nbsp;
-export function* searchAndAddUser(action) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
-<span class="cstat-no" title="statement not covered" >  const { coordinate } = action.paylo<span class="cstat-no" title="statement not covered" >a</span>d;<span class="cstat-no" title="statement not covered" ></span></span>
-  const response = yield call(api.get, `users/${action.payload.login}`);<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span>
+export function* searchAndAddUser(action) {
+  const { coordinate } = action.payload;
+  const response = yield call(api.get, `users/${action.payload.login}`);
 &nbsp;
-  if (respons<span class="cstat-no" title="statement not covered" >e.ok) {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
-    const locationsState = yield select<span class="cstat-no" title="statement not covered" >(locations);</span>
-<span class="cstat-no" title="statement not covered" >    const duplicated = locationsStat<span class="fstat-no" title="function not covered" >e.</span>data.some(dat<span class="cstat-no" title="statement not covered" >a =&gt; data.user.id === response.data.id);<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+  if (response.ok) {
+    let duplicated = false;
+    const locationsState = yield select(locations);
+&nbsp;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (locationsState) {
+<span class="cstat-no" title="statement not covered" >      duplicated = locationsState.data.some(<span class="fstat-no" title="function not covered" >da</span>ta =&gt; <span class="cstat-no" title="statement not covered" >data.user.id === response.data.id)</span>;</span>
+    }
 &nbsp;
     yield put({
-      type: duplicated ? LocationsTypes.DUPLICATED : LocationsTypes.SUCCESS,
-      payload: { location: { user: response.data, marker: coordinate <span class="cstat-no" title="statement not covered" >} },<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+      type: duplicated ? <span class="branch-0 cbranch-no" title="branch not covered" >LocationsTypes.DUPLICATED </span>: LocationsTypes.SUCCESS,
+      payload: { location: { user: response.data, marker: coordinate } },
     });
   } else {
-    yield put({ type: LocationsTypes.ERROR });<span class="cstat-no" title="statement not covered" ></span>
+    yield put({ type: LocationsTypes.ERROR });
   }
 }
 &nbsp;</pre></td></tr>
@@ -121,7 +133,7 @@ export function* searchAndAddUser(action) {<span class="cstat-no" title="stateme
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 05 2018 18:48:05 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jan 06 2018 16:57:42 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

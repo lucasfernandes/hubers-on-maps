@@ -58,8 +58,10 @@
     ],
     "collectCoverageFrom": [
       "src/pages/**/*.{js,jsx}",
-      "src/redux/ducks/**/*.{js,jsx}",
-      "src/redux/sagas/**/*.{js,jsx}"
+			"src/redux/ducks/**/*.{js,jsx}",
+			"!src/redux/ducks/index.{js,jsx}",
+			"src/redux/sagas/**/*.{js,jsx}",
+			"!src/redux/sagas/index.{js,jsx}"
     ]
   }
 }

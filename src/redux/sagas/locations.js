@@ -11,8 +11,12 @@ export function* searchAndAddUser(action) {
   const response = yield call(api.get, `users/${action.payload.login}`);
 
   if (response.ok) {
+    let duplicated = false;
     const locationsState = yield select(locations);
-    const duplicated = locationsState.data.some(data => data.user.id === response.data.id);
+
+    if (locationsState) {
+      duplicated = locationsState.data.some(data => data.user.id === response.data.id);
+    }
 
     yield put({
       type: duplicated ? LocationsTypes.DUPLICATED : LocationsTypes.SUCCESS,
