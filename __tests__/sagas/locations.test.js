@@ -54,29 +54,15 @@ describe('Testing Locations SAGA', () => {
     apiMock.onGet('/users/lucasfernandes')
       .reply(200, userFixture['users/lucasfernandes']);
 
+    const dupSagaTester = new SagaTester({
+      initialState: { locations: duplicatedState },
+    });
 
-    // sagaTester.dispatch(reducer(
-    //   duplicatedState,
-    //   { type: TYPES.REQUEST, payload: duplicatedState.data[0] },
-    // ));
- 
-    sagaTester.dispatch(addLocation('lucasfernandes', coordinateFixture['coordinate/lucasfernandes']));
-    await sagaTester.waitFor(TYPES.SUCCESS);
-    
-    sagaTester.dispatch(addLocation('lucasfernandes', coordinateFixture['coordinate/lucasfernandes']));
+    dupSagaTester.start(rootSaga);
 
-    await sagaTester.waitFor(TYPES.SUCCESS);
-    // await sagaTester.waitFor(TYPES.DUPLICATED);
+    dupSagaTester.dispatch(addLocation('lucasfernandes', coordinateFixture['coordinate/lucasfernandes']));
 
-    // expect(sagaTester.getLatestCalledAction()).toEqual({
-    //   type: TYPES.SUCCESS,
-    //   payload: {
-    //     location: {
-    //       user: userFixture['users/lucasfernandes'],
-    //       marker: coordinateFixture['coordinate/lucasfernandes'],
-    //     },
-    //   },
-    // });
+    await dupSagaTester.waitFor(TYPES.DUPLICATED);
   });
 
   it('throws error when user doesnt exists', async () => {
